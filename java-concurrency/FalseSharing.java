@@ -16,7 +16,7 @@ public class FalseSharing {
                 counter1.count1 += 1;
             }
             long endTime = System.currentTimeMillis();
-            System.out.println("thread1 duration: " + (endTime - startTime));
+            System.out.println("thread1 duration (ms): " + (endTime - startTime));
         });
 
         Thread thread2 = new Thread(() -> {
@@ -25,7 +25,7 @@ public class FalseSharing {
                 counter2.count2 += 1;
             }
             long endTime = System.currentTimeMillis();
-            System.out.println("thread2 duration: " + (endTime - startTime));
+            System.out.println("thread2 duration (ms): " + (endTime - startTime));
         });
 
         thread1.start();
