@@ -7,7 +7,7 @@ public class FalseSharing {
 
     public static void main(String args[]) {
         Counter counter1 = new Counter();
-        Counter counter2 = new Counter();
+        Counter counter2 = counter1;
         long iterations = 1_000_000_000;
 
         Thread thread1 = new Thread(() -> {
