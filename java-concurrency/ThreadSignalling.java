@@ -46,8 +46,8 @@ public class ThreadSignalling {
     public static void main(String[] args) {
         waitNotify waitNotifyObj = new waitNotify();
 
-        Thread t1 = new Thread(() -> waitNotifyObj.doWait());
-        Thread t2 = new Thread(() -> waitNotifyObj.doNotify());
+        Thread t1 = new Thread(waitNotifyObj::doWait);
+        Thread t2 = new Thread(waitNotifyObj::doNotify);
 
         t1.start();
         t2.start();
