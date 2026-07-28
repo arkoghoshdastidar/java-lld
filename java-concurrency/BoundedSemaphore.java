@@ -9,6 +9,7 @@ public class BoundedSemaphore {
     public synchronized void acquire() throws InterruptedException {
         while(this.signal == this.bound) wait();
         this.signal++;
+        notify();
     }
 
     public synchronized void release() throws InterruptedException {
