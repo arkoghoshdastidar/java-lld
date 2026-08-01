@@ -1,22 +1,29 @@
 import java.util.concurrent.BlockingQueue;
 
-public class RunnableThread implements Runnable {
-    BlockingQueue queue = null;
-    boolean isStopped = false;
+class RunnableThread implements Runnable {
+    private BlockingQueue<Runnable> queue = null;
+    private boolean isStopped = false;
+    private final Thread thread = Thread.currentThread();
 
-    public RunnableThread(BlockingQueue queue) {
+    public RunnableThread(BlockingQueue<Runnable> queue) {
         this.queue = queue;
     }
 
+    @Override
     public void run() {
         while(!this.isStopped) {
-            Runnable r = this.queue.pop();
-            r.run();
+            try{
+                Runnable r = this.queue.take();
+                r.run();
+            }catch(Exception e) {
+                System.out.println("Error while popping out a task from the common task queue, thread: " + Thread.currentThread().getName());
+                System.out.println(e.getMessage());
+            }
         }
     }
 
-    public void stop() {
+    public synchronized void stop() {
         this.isStopped = true;
-        this.currentThread.interrupt();
+        this.thread.interrupt();
     }
 }
