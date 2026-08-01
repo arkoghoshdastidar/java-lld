@@ -17,7 +17,9 @@ class ThreadPool {
         }
 
         for(RunnableThread runnable: runnables) {
-            runnable.run();
+            Thread workerThread = new Thread(runnable);
+            runnable.setThread(workerThread);
+            workerThread.start();
         }
     };
 

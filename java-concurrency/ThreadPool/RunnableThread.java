@@ -3,10 +3,14 @@ import java.util.concurrent.BlockingQueue;
 class RunnableThread implements Runnable {
     private BlockingQueue<Runnable> queue = null;
     private boolean isStopped = false;
-    private final Thread thread = Thread.currentThread();
+    private Thread thread = null;
 
     public RunnableThread(BlockingQueue<Runnable> queue) {
         this.queue = queue;
+    }
+    
+    public void setThread(Thread t) {
+        this.thread = t;
     }
 
     @Override
