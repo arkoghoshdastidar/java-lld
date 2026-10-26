@@ -28,12 +28,15 @@ public class ParkingLot {
         this.entrances = new HashMap<>();
         this.exits = new HashMap<>();
         this.displayBoards = new HashMap<>();
-        this.activeTickets = new HashMap<>();
     }
 
-    public static synchronized ParkingLot getInstance(String id, String name, String address) {
+    public static ParkingLot getInstance(String id, String name, String address) {
         if (instance == null) {
-            instance = new ParkingLot(id, name, address);
+            synchronized (ParkingLot.class) {
+                if(instance == null) {
+                    instance = new ParkingLot(id, name, address);
+                }
+            }
         }
         return instance;
     }
