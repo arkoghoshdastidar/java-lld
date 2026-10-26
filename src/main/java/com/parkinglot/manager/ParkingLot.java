@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class ParkingLot {
 
-    private static ParkingLot instance = null;
+    private static volatile ParkingLot instance = null;
     private String id;
     private String name;
     private String address;
@@ -31,21 +31,21 @@ public class ParkingLot {
         this.activeTickets = new HashMap<>();
     }
 
-    public static ParkingLot getInstance(String id, String name, String address) {
+    public static synchronized ParkingLot getInstance(String id, String name, String address) {
         if (instance == null) {
             instance = new ParkingLot(id, name, address);
         }
         return instance;
     }
 
-    public static ParkingLot getInstance() {
+    public static synchronized ParkingLot getInstance() {
         if (instance == null) {
             throw new IllegalStateException("ParkingLot has not been initialized yet!");
         }
         return instance;
     }
 
-    public boolean addParkingSpot(String spotId, ParkingSpot spot) {
+    public synchronized boolean addParkingSpot(String spotId, ParkingSpot spot) {
         if (parkingSpots.containsKey(spotId)) {
             return false;
         }
@@ -53,7 +53,7 @@ public class ParkingLot {
         return true;
     }
 
-    public boolean addEntrance(String entranceId, Entrance entrance) {
+    public synchronized boolean addEntrance(String entranceId, Entrance entrance) {
         if (entrances.containsKey(entranceId)) {
             return false;
         }
@@ -61,7 +61,7 @@ public class ParkingLot {
         return true;
     }
 
-    public boolean addExit(String exitId, Exit exit) {
+    public synchronized boolean addExit(String exitId, Exit exit) {
         if (exits.containsKey(exitId)) {
             return false;
         }
@@ -69,12 +69,12 @@ public class ParkingLot {
         return true;
     }
 
-    public ParkingTicket getParkingTicket(Vehicle vehicle) {
+    public synchronized ParkingTicket getParkingTicket(Vehicle vehicle) {
         // business logic
         return null;
     }
 
-    public boolean isFull(Vehicle type) {
+    public synchronized boolean isFull(Vehicle type) {
         // business logic
         return false;
     }
