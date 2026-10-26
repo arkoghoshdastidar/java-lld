@@ -1,6 +1,9 @@
 package com.parkinglot.account;
 
+import com.parkinglot.boards.DisplayBoard;
 import com.parkinglot.models.Person;
+import com.parkinglot.operations.Entrance;
+import com.parkinglot.operations.Exit;
 import com.parkinglot.spots.ParkingSpot;
 
 public class Admin extends Account {
@@ -8,12 +11,12 @@ public class Admin extends Account {
         super(username, password, person);
     }
 
-    public boolean addParkingSpot(ParkingSpot spot, int floor) {
+    public boolean addParkingSpot(ParkingSpot spot, Integer floor) {
         //business logic
         return false;
     }
 
-    public boolean addDisplayBoard(DisplayBoard board, int floor) {
+    public boolean addDisplayBoard(DisplayBoard board, Integer floor) {
         //business logic
         return false;
     }

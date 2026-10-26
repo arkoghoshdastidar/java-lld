@@ -35,7 +35,9 @@ public abstract class ParkingSpot {
         return this.vehicle;
     }
 
-    ParkingSpotType getSpotType() {
+    public ParkingSpotType getSpotType() {
         return spotType;
     }
+
+    public String getId() {return id;}
 }

@@ -1,5 +1,7 @@
 package com.parkinglot.vehicle;
 
+import com.parkinglot.operations.ParkingTicket;
+
 public abstract class Vehicle {
     private String licenseNumber;
     private ParkingTicket ticket;
@@ -16,7 +18,7 @@ public abstract class Vehicle {
         this.licenseNumber = licenseNumber;
     }
 
-    void assignTicket(ParkingTicket ticket) {
+    public void assignTicket(ParkingTicket ticket) {
         this.ticket = ticket;
     }
 }

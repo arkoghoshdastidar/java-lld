@@ -1,7 +1,7 @@
-package com.parkinglot.boards;
+package com.parkinglot.operations;
 
 public class ParkingRate {
-    private int hours;
+    private Integer hours;
 
     public double calculate(ParkingTicket ticket) {
         //business logic
