@@ -1,5 +1,6 @@
 package com.elevator.button;
 import com.elevator.enums.Direction;
+import com.elevator.floor.Floor;
 
 public class HallButton extends Button {
     private Direction direction;
@@ -8,6 +9,18 @@ public class HallButton extends Button {
 
     public HallButton(Direction direction) {
         this.setDirection(direction);
+    }
+
+    public void setElevatorSystem(ElevatorSystem system) {
+        if(this.system == null) {
+            this.system = system;
+        }
+    }
+
+    public void setFloor(Floor floor) {
+        if(this.floor == null) {
+            this.floor = floor;
+        }
     }
 
     public Direction getDirection() {

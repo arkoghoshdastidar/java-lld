@@ -1,6 +1,7 @@
 package com.elevator.panel;
 import com.elevator.button.HallButton;
 import com.elevator.enums.Direction;
+import com.elevator.floor.Floor;
 
 public class HallPanel {
     private HallButton upButton;
