@@ -106,4 +106,8 @@ public class ElevatorCar {
     public ElevatorState getState() {
         return state;
     }
+
+    public int getID() {
+        return ID;
+    }
 }
