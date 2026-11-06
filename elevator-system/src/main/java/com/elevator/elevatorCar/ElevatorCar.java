@@ -20,7 +20,8 @@ public class ElevatorCar {
     private PriorityQueue<Integer> maxPriorityQueue;
     private PriorityQueue<Integer> minPriorityQueue;
 
-    ElevatorCar(List<Floor> floors, List<Display> displays) {
+    ElevatorCar(int ID, List<Floor> floors, List<Display> displays) {
+        this.ID = ID;
         currentFloor = 0;
         elevatorPanel = new ElevatorPanel(floors);
         door = new Door();
