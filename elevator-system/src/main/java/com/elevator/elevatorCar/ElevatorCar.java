@@ -2,6 +2,7 @@ package com.elevator.elevatorCar;
 
 import com.elevator.display.Display;
 import com.elevator.door.Door;
+import com.elevator.enums.Direction;
 import com.elevator.enums.ElevatorState;
 import com.elevator.floor.Floor;
 import com.elevator.panel.ElevatorPanel;
@@ -14,18 +15,26 @@ public class ElevatorCar {
     private int currentFloor;
     private ElevatorState state;
     private Door door;
-    private Display display;
+    private List<Display> displays;
     private ElevatorPanel elevatorPanel;
     private PriorityQueue<Integer> maxPriorityQueue;
     private PriorityQueue<Integer> minPriorityQueue;
 
-    ElevatorCar(List<Floor> floors) {
+    ElevatorCar(List<Floor> floors, List<Display> displays) {
         currentFloor = 0;
         elevatorPanel = new ElevatorPanel(floors);
         door = new Door();
-        display = new Display(1, 0);
+        this.displays = displays;
         maxPriorityQueue = new PriorityQueue<>((a, b) -> Integer.compare(b, a));
         minPriorityQueue = new PriorityQueue<>();
+    }
+
+    void updateDisplay() {
+        displays.forEach(display -> {
+            display.updateElevatorPosition(currentFloor);
+            display.updateDirection(state == ElevatorState.UP ? Direction.UP : state == ElevatorState.DOWN ? Direction.DOWN : Direction.IDLE);
+            display.showStatus();
+        });
     }
 
     public boolean requestStop(int floorNumber) {
