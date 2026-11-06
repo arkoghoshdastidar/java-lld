@@ -1,5 +1,7 @@
 package com.elevator.button;
 
+import com.elevator.floor.Floor;
+
 public class ElevatorButton extends Button {
     private Floor destinationFloor;
 

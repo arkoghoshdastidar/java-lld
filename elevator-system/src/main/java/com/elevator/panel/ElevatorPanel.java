@@ -3,8 +3,8 @@ package com.elevator.panel;
 import com.elevator.button.DoorButton;
 import com.elevator.button.ElevatorButton;
 import com.elevator.button.EmergencyButton;
+import com.elevator.floor.Floor;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ElevatorPanel {
