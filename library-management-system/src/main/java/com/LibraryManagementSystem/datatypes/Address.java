@@ -51,4 +51,8 @@ public class Address {
             return new Address(streetAddress, city, state, zipCode, country);
         }
     }
+
+    public String getAddressString() {
+        return streetAddress + " " + city + " " + state + " " + zipCode + " " + country;
+    }
 }
