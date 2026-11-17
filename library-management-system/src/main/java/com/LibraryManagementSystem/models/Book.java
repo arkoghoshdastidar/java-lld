@@ -87,4 +87,20 @@ public class Book {
             return new Book(this);
         }
     }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public List<Author> getAuthors() {
+        return authors;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public Date getPublicationDate() {
+        return publicationDate;
+    }
 }

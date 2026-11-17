@@ -40,4 +40,12 @@ public class BookItem {
     public void setStatue(BookStatus status) {
         this.status = status;
     }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public boolean isBookAvailable() {
+        return !isReferenceOnly && status == BookStatus.AVAILABLE;
+    }
 }

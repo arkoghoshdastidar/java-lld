@@ -14,4 +14,8 @@ public class Person {
         this.phone = phone;
         this.address = address;
     }
+
+    public String getName() {
+        return name;
+    }
 }
