@@ -2,6 +2,7 @@ package com.LibraryManagementSystem.models;
 
 import com.LibraryManagementSystem.enums.BookStatus;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public class BookItem {
@@ -22,11 +23,19 @@ public class BookItem {
         this.book = book;
     }
 
-    public boolean checkout(Member member){
-        return true;
+    public void checkout(Member member){
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+        calendar.add(Calendar.DAY_OF_MONTH, 15);
+
+        member.incrementTotalBooksCheckedout();
+        setPlacedAt(null);
+        setStatus(BookStatus.ISSUED);
+        setBorrowedDate(new Date());
+        setDueDate(calendar.getTime());
     }
 
-    public void setBorrowedDateNow(Date date) {
+    public void setBorrowedDate(Date date) {
         this.borrowed = date;
     }
 
@@ -36,6 +45,10 @@ public class BookItem {
 
     public void setRack(Rack rack) {
         this.placedAt = rack;
+    }
+
+    public Rack getRack() {
+        return placedAt;
     }
 
     public void setStatus(BookStatus status) {
@@ -48,5 +61,9 @@ public class BookItem {
 
     public boolean isBookAvailable() {
         return !isReferenceOnly && status == BookStatus.AVAILABLE;
+    }
+
+    private void setPlacedAt(Rack placedAt) {
+        this.placedAt = placedAt;
     }
 }

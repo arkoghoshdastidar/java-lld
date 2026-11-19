@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Member extends User {
     private Date dateOfMembership;
-    private Integer totalBooksCheckedout;
+    private int totalBooksCheckedout;
 
     public Member(int ID, String password) {
         super(ID, password);
@@ -17,32 +17,12 @@ public class Member extends User {
         return true;
     }
 
-    public Integer getTotalBooksCheckedout() {
+    public int getTotalBooksCheckedout() {
         return totalBooksCheckedout;
-    }
-
-    public boolean reserveBookItem(BookItem bookItem) {
-        return true;
     }
 
     public boolean incrementTotalBooksCheckedout() {
         totalBooksCheckedout++;
         return true;
-    }
-
-    public boolean checkoutBookItem(BookItem bookItem) {
-        return true;
-    }
-
-    public boolean returnBookItem(BookItem bookItem) {
-        return true;
-    }
-
-    public boolean renewBookItem(BookItem bookItem) {
-        return true;
-    }
-
-    public Integer checkForFine() {
-        return 0;
     }
 }

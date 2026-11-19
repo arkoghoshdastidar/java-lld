@@ -7,14 +7,14 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class BookLending {
-    private String ID;
+    private int ID;
     private Date creationDate;
     private Date returnDate;
     private Date dueDate;
     private Member member;
     private BookItem book;
 
-    public void BookLending(String ID, Member member, BookItem bookItem) {
+    public BookLending(int ID, Member member, BookItem bookItem) {
         this.ID = ID;
         this.member = member;
         this.book = bookItem;
@@ -23,6 +23,7 @@ public class BookLending {
         calendar.setTime(new Date());
         calendar.add(Calendar.DAY_OF_MONTH, 15);
         this.dueDate = calendar.getTime();
+        bookItem.checkout(member);
     }
 
     public boolean reviseDueDate(Date date) {

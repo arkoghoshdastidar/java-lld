@@ -23,5 +23,13 @@ abstract public class User {
         this.libraryCard = libraryCard;
     }
 
+    public String getName() {
+        return person.getName();
+    }
+
+    public AccountStatus getAccountStatus() {
+        return accountStatus;
+    }
+
     public abstract boolean resetPassword(String password);
 }

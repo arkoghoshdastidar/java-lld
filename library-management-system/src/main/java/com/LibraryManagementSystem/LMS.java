@@ -2,9 +2,10 @@ package com.LibraryManagementSystem;
 
 import com.LibraryManagementSystem.datatypes.Address;
 import com.LibraryManagementSystem.enums.BookStatus;
+import com.LibraryManagementSystem.models.Member;
 import com.LibraryManagementSystem.models.Author;
-import com.LibraryManagementSystem.models.Book;
 import com.LibraryManagementSystem.models.Rack;
+import com.LibraryManagementSystem.models.Book;
 import com.LibraryManagementSystem.models.BookItem;
 import com.LibraryManagementSystem.search.Catalog;
 import com.LibraryManagementSystem.system.Library;
@@ -15,7 +16,7 @@ import java.util.Date;
 
 public class LMS {
     public static void main(String[] args) {
-        System.out.println("\n\n\n================= Starting Library Management System ================\n\n\n");
+        System.out.println("\n================= Starting Library Management System ================");
 
         String libraryName = "HSR Layout Library";
         Address libraryAddress = new Address.Builder("21st Main Road, 15th Cross Road, HSR Sector 1").setCity("Bengaluru").setState("Karnataka").setZipCode(831001).setCountry("IN").build();
@@ -23,8 +24,6 @@ public class LMS {
         Library library = Library.getInstance(libraryName, libraryAddress);
 
         System.out.println("New Library : " + library.getName() + "\nAddress : " + library.getAddress().getAddressString());
-
-        System.out.println("====================== Preparing the catalog and library object ====================");
 
         List<Author> authors = List.of(
                 new Author("Reddy", "reddy@gmail.com", "1111-1111-11", new Address.Builder("Mumbai").build()),
@@ -63,8 +62,42 @@ public class LMS {
         Catalog catalog = Catalog.getInstance(books);
         library.setCatalog(catalog);
 
-        System.out.println("====================== The catalog and library object prepared ====================");
+         Member member1 = new Member(1, "agd_014");
+         Member member2 = new Member(2, "suraj_007");
+         Member member3 = new Member(3, "mac_mohan");
 
-        System.out.println("\n\n\n================== Stopping Library Management System ===============\n\n\n");
+         System.out.println("\nMember1 is searching the catalog for a book with title - DSA\n");
+
+         BookItem searchedBook = library.getCatalog().searchByTitle("DSA");
+
+         if(searchedBook != null) {
+             System.out.println("Book Found");
+             System.out.println(searchedBook.getBook().getBookDetails());
+             System.out.println("Member1 is booking the searched book");
+             boolean orderPlaced = library.checkoutBook(searchedBook, member1);
+
+             if(orderPlaced) {
+                 System.out.println("Order placed for book: " + searchedBook.getBook().getBookDetails() + " successfully - " + "Member1");
+             }else {
+                 System.out.println("Failed to place order");
+             }
+
+         }else{
+             System.out.println("Book not found");
+         }
+
+         System.out.println("\nMember2 is searching the catalog for a book with subject - Problem Solving\n");
+         searchedBook = library.getCatalog().searchBySubject("low level design");
+
+         if(searchedBook != null) {
+             System.out.println("Book Found");
+             System.out.println(searchedBook.getBook().getBookDetails());
+         }else {
+             System.out.println("Book not found");
+         }
+
+
+
+         System.out.println("\n================== Stopping Library Management System ===============");
     }
 }

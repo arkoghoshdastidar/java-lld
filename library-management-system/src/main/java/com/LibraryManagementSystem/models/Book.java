@@ -107,4 +107,8 @@ public class Book {
     public Date getPublicationDate() {
         return publicationDate;
     }
+
+    public String getBookDetails() {
+        return "Title: " + title + "\nSubject: " + subject + "\nPublisher: " + publisher + "\nPublication Date: " + publicationDate;
+    }
 }
