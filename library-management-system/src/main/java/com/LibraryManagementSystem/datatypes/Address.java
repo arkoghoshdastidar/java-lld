@@ -22,10 +22,10 @@ public class Address {
         private int zipCode;
         private String country;
 
-        public Builder Builder(String streetAddress) {
-            this.streetAddress = streetAddress;
-            return this;
+        public Builder(String s) {
+            this.streetAddress = s;
         }
+
 
         public Builder setCity(String city) {
             this.city = city;

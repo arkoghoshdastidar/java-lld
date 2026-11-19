@@ -42,10 +42,9 @@ public class Book {
         private BookFormat format;
         private List<Author> authors;
 
-        public Builder Builder(final String ISBN, final String title) {
+        public Builder(final String ISBN, final String title) {
             this.ISBN = ISBN;
             this.title = title;
-            return this;
         }
 
         public Builder setSubject(String subject) {
@@ -80,6 +79,11 @@ public class Book {
 
         public Builder setAuthors(List<Author> authors) {
             this.authors = authors;
+            return this;
+        }
+
+        public Builder setTitle(String title) {
+            this.title = title;
             return this;
         }
 

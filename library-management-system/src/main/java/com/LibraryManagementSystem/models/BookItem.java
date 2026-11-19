@@ -14,7 +14,8 @@ public class BookItem {
     private Rack placedAt;
     private Book book;
 
-    public void BookItem(boolean isReferenceOnly, double price, Date dateOfPurchase, Book book) {
+
+    public BookItem(boolean isReferenceOnly, double price, Date dateOfPurchase, Book book) {
         this.isReferenceOnly = isReferenceOnly;
         this.price = price;
         this.dateOfPurchase = dateOfPurchase;
@@ -37,7 +38,7 @@ public class BookItem {
         this.placedAt = rack;
     }
 
-    public void setStatue(BookStatus status) {
+    public void setStatus(BookStatus status) {
         this.status = status;
     }
 

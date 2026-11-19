@@ -6,6 +6,6 @@ public class Rack {
 
     public Rack(String identifier) {
         this.identifier = identifier;
-        this.isOccupied = false;
+        this.isOccupied = true;
     }
 }
